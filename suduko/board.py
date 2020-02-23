@@ -36,12 +36,15 @@ class Board:
             self.result.append(results_row)
             
         # add check functions
-        self._solve_func = []
-        self._solve_func.append(self._solve_row)
-        self._solve_func.append(self._solve_column)
-        self._solve_func.append(self._solve_square)
+        self._check_func = []
+        self._check_func.append(self._solve_row)
+        self._check_func.append(self._solve_column)
+        self._check_func.append(self._solve_square)
         
-
+        self._solve_func = []
+        self._solve_func.append(self._removeNumberFromCell)
+        
+        
     def _solve_row(self, x, y, num):
         """ get row array and elimiate number from cells
         
@@ -50,7 +53,8 @@ class Board:
         y -- the column of the current cell (VOID)
         """
         for y1 in range(0, 9):
-            self._removeNumberFromCell(x, y1, num)
+            for fn in self._solve_func:
+                fn(x, y1, num)
 
 
     def _solve_column(self, x, y, num):
@@ -61,7 +65,8 @@ class Board:
         y -- the column of the current cell
         """
         for x1 in range(0, 9):
-            self._removeNumberFromCell(x1, y, num)  
+            for fn in self._solve_func:
+                fn(x1, y, num)  
 
         
     def _solve_square(self, x, y, num):
@@ -76,7 +81,8 @@ class Board:
         y = int(y/3) % 3 * 3 # start at y
         for x1 in range(x,x + 3):
             for y1 in range(y,y + 3):
-                self._removeNumberFromCell(x1, y1, num)
+                for sfn in self._solve_func:
+                    sfn(x1, y1, num)
                 
 
     def _removeNumberFromCell(self, x, y, num):
@@ -101,8 +107,8 @@ class Board:
                         # get the only number in the array 
                         number = self.result[x][y][0]
                         # call functions to remove number from corressponding cells
-                        for f in self._solve_func:
-                            f(x, y, number)
+                        for cfn in self._check_func:
+                            cfn(x, y, number)
             # exit if no changes have been made on final pass                            
             if self.is_done == True:
                 break

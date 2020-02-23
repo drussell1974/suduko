@@ -6,7 +6,7 @@ class TheISuduko(Board):
         Board.__init__(self,board)
         
         # add the getI function to the check array
-        self._solve_func.append(self._solve_theI)
+        self._check_func.append(self._solve_theI)
         
         
     def _solve_theI(self, x, y, num):
