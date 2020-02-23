@@ -1,4 +1,4 @@
-from suduko.board import Board as Board
+from suduko.thei import TheISuduko as Board
 #from thei import TheIBoard as Board
 
 # create the starting grid
