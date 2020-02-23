@@ -23,87 +23,103 @@ class CompleteFinalSquareTest(TestCase):
         pass
     
 
-    def test_fill__x0_y0(self):
+    def test__solve__x0_y0(self):
         # arrange
-        self.grid[0][0] = 0
+        x = 0
+        y = 0
+        self.grid[x][y] = 0
         # act
         board = Board(self.grid)
-        board.check()
+        board.solve()
  
-        self.assertEqual(1, board.result[0][0][0])
+        self.assertEqual(1, board.result[x][y][0])
         self.assertTrue(board.is_done)
         
         
-    def test_fill__x0_y1(self):
+    def test__solve__x0_y1(self):
         # arrange
-        self.grid[0][1] = 0
+        x = 0
+        y = 1
+        self.grid[x][y] = 0
         # act
         board = Board(self.grid)
-        board.check()
+        board.solve()
  
-        self.assertEqual(2, board.result[0][1][0])
+        self.assertEqual(2, board.result[x][y][0])
         
         
-    def test_fill__x0_y7(self):
+    def test__solve__x0_y7(self):
         # arrange
-        self.grid[0][7] = 0
+        x = 0
+        y = 7
+        self.grid[x][y] = 0
         # act
         board = Board(self.grid)
-        board.check()
+        board.solve()
  
-        self.assertEqual(8, board.result[0][7][0])
+        self.assertEqual(8, board.result[x][y][0])
  
 
-    def test_fill__x1_y0(self):
+    def test__solve__x1_y0(self):
         # arrange
-        self.grid[1][0] = 0
+        x = 1
+        y = 0
+        self.grid[x][y] = 0
         # act
         board = Board(self.grid)
-        board.check()
+        board.solve()
  
-        self.assertEqual(7, board.result[1][0][0])
+        self.assertEqual(7, board.result[x][y][0])
         self.assertTrue(board.is_done)
 
         
-    def test_fill__x0_y8(self):
+    def test__solve__x0_y8(self):
         # arrange
-        self.grid[0][8] = 0
+        x = 0
+        y = 8
+        self.grid[x][y] = 0
         # act
         board = Board(self.grid)
-        board.check()
+        board.solve()
  
-        self.assertEqual(9, board.result[0][8][0])
+        self.assertEqual(9, board.result[x][y][0])
         
         
-    def test_fill__x8_y0(self):
+    def test__solve__x8_y0(self):
         # arrange
-        self.grid[8][0] = 0
+        x = 8
+        y = 0
+        self.grid[x][y] = 0
         # act
         board = Board(self.grid)
-        board.check()
+        board.solve()
  
-        self.assertEqual(6, board.result[8][0][0])
+        self.assertEqual(6, board.result[x][y][0])
         self.assertTrue(board.is_done)
         
 
-    def test_fill__x8_y8(self):
+    def test__solve__x8_y8(self):
         # arrange
-        self.grid[8][8] = 0
+        x = 8
+        y = 8
+        self.grid[x][y] = 0
         # act
         board = Board(self.grid)
-        board.check()
+        board.solve()
  
-        self.assertEqual(2, board.result[8][8][0])
+        self.assertEqual(2, board.result[x][y][0])
         self.assertTrue(board.is_done)
         
         
-    def test_fill__x2_y2(self):
+    def test__solve__x2_y2(self):
         # arrange
-        self.grid[2][2] = 0
+        x = 2
+        y = 2
+        self.grid[x][y] = 0
         # act
         board = Board(self.grid)
-        board.check()
+        board.solve()
  
-        self.assertEqual(6, board.result[2][2][0])
+        self.assertEqual(6, board.result[x][y][0])
         self.assertTrue(board.is_done)
             

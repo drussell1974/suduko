@@ -23,21 +23,37 @@ class RemoveFromColTest(TestCase):
         pass
     
     
-    def test_removeOne(self):
+    def test_remove_one(self):
         # arrange
-        self.grid[0][0] = 0
+        x = 8
+        y = 0
+        self.grid[x][y] = 0
         # act
         board = Board(self.grid)
-        board.removeFromCol(0,0,1)
+        board._solve_column(x,y,1)
  
-        self.assertEqual([2, 3, 4, 5, 6, 7, 8, 9], board.result[0][0])
+        self.assertEqual([2, 3, 4, 5, 6, 7, 8, 9], board.result[x][y])
 
 
-    def test_removeNine(self):
+    def test_remove_nine(self):
         # arrange
-        self.grid[0][0] = 0
+        x = 3
+        y = 3
+        self.grid[x][y] = 0
         # act
         board = Board(self.grid)
-        board.removeFromCol(0,0,9)
+        board._solve_column(x,y,9)
  
-        self.assertEqual([1, 2, 3, 4, 5, 6, 7, 8], board.result[0][0])
+        self.assertEqual([1, 2, 3, 4, 5, 6, 7, 8], board.result[x][y])
+
+
+    def test_remove_five(self):
+        # arrange
+        x = 2
+        y = 1
+        self.grid[x][y] = 0
+        # act
+        board = Board(self.grid)
+        board._solve_column(x,y,5)
+ 
+        self.assertEqual([1, 2, 3, 4, 6, 7, 8, 9], board.result[x][y])

@@ -90,7 +90,7 @@ easier2 = [
 
 # start the board
 
-board = Board(easier2)
-board.check()
+board = Board(easier1)
+board.solve()
 
 print(board.get_result(help=True))
